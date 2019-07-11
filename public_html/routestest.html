@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <script type="text/javascript" src="scripts/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>
+        <script src="scripts/controllerLoad.js"></script>
+    </head>
+    <body ng-app="routingApp">
+        <h2>AngularJS Routing Application</h2>
+        <ul>
+            <li><a href="#/">Default Route</a></li>
+            <li><a href="#/second">Second Route</a></li>
+            <li><a href="#/asdasdasd">Nonexistent Route</a></li>
+        </ul>
+        <div ng-view></div>
+        <script type="text/javascript">
+            var app = angular.module('routingApp', ['ngRoute','loadCtrl'])
+                    .config(['$routeProvider', function ($routeProvider) {
+                            $routeProvider.when('/', {
+                                template: '<h5>This is the default route</h5>'
+                            })
+                            .when('/second', {
+                                template: '<h5>This is the second route</h5>',
+                                controller: 'myaccountCtrl'
+                            })
+                            .otherwise({redirectTo: '/'});
+                        }]);                
+        </script>
+    </body>
+</html>

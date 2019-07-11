@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  
+  <head lang="en">
+    <meta charset="utf-8">
+    <title>Custom Plunker</title>
+    <script src="scripts/angular.js"></script>
+    <link rel="stylesheet" href="style.css">  
+   
+  </head>
+  
+  <body ng-app="angularjs-starter"  ng-controller="MainCtrl as lobbyctr">
+    <h1>Hello {{name}}</h1>
+    <div ng-repeat="t in getTimes(4)">text</div>
+    <input type="text" name="clik" ng-model="lobbyctr.count">
+    {{lobbyctr.count}}
+    <button type="button" value="click" ng-click="lobbyctr.getIndex(lobbyctr.count)">test Index</button>
+    <script type="text/javascript" src="scripts/testme.js"></script>
+  </body>
+    
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <body ng-app="stockMarketApp">
+        <div ng-controller="MainCtrl as mainCtrl">
+            <h3>List of Stocks</h3>
+            <div simple-stock-repeat="mainCtrl.stocks">
+                We found {{stock.name}} at {{currentIndex}}
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+        </script>
+        <script src="scripts/trans.js"></script>
+        <script type="text/javascript" src="scripts/angular.js"></script>
+    </body>
+</html>

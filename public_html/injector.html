@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="scripts/angular.js"></script>
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/injector.js"></script>   
+        <script type="text/javascript" src="scripts/angularInjector.js"></script>        
+    </head>
+    <body ng-app="injector">
+        <script type="text/javascript">
+            //var $div = '<div ng-controller="MyCtrl">{{content}}</div>';
+            //document.getElementById('container').innerHTML = $div;
+            var app = angular.module('injector', []);
+            app.controller("AppCtrl", function ($scope,$injector,$compile) {
+                $injector.invoke(function(game){
+                    console.log(game.title);
+                    $scope.title = game.title;
+                });
+                $scope.content = "tehis is for testing";
+                var greeting = $injector.get('game');
+            });
+            app.factory("game", function () {
+                console.log("game called "+this.key);
+                return {
+                    title: "StarCraft"
+                };
+            });
+            var $injectorNew = angular.injector(['ng','injector']);
+            $injectorNew.invoke(function($http,game,$rootScope,$compile,$document){
+                $compile($document)($rootScope);
+                $rootScope.$digest();
+                console.log("in external "+$document);
+                console.log(game.title);
+            });
+            var $div = $('<div ng-controller="MyCtrl">{{}}</div>');
+            $(document.body).append($div);
+            /*angular.element(document).injector().invoke(function($compile) {
+                var scope = angular.element($div).scope();
+                $compile($div)(scope);
+            });*/
+        </script>
+         <div  ng-controller="AppCtrl"> {{ title }} </div>
+        </body>
+</html>
